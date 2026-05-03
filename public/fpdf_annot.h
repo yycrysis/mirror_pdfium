@@ -232,6 +232,15 @@ FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_AddInkStroke(FPDF_ANNOTATION annot,
                                                      const FS_POINTF* points,
                                                      size_t point_count);
 
+
+// 设置笔迹线宽
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_SetInkStrokeWidth(FPDF_ANNOTATION annot, int width);
+FPDF_EXPORT float FPDF_CALLCONV FPDFAnnot_SetInkStrokeWidthEx(FPDF_ANNOTATION annot, float width);
+
+// 获取笔迹线宽
+FPDF_EXPORT int FPDF_CALLCONV FPDFAnnot_GetInkStrokeWidth(FPDF_ANNOTATION annot);
+
+
 // Experimental API.
 // Removes an InkList in |annot|.
 // This API works only for ink annotations.
@@ -317,6 +326,14 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_SetColor(FPDF_ANNOTATION annot,
 //
 // Returns true if successful.
 FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetColor(FPDF_ANNOTATION annot,
+                                                       FPDFANNOT_COLORTYPE type,
+                                                       unsigned int* R,
+                                                       unsigned int* G,
+                                                       unsigned int* B,
+                                                       unsigned int* A);
+
+// 跟FPDFAnnot_GetColor相比 不管有没有AP，都获取颜色  
+FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDFAnnot_GetColorSimple(FPDF_ANNOTATION annot,
                                                        FPDFANNOT_COLORTYPE type,
                                                        unsigned int* R,
                                                        unsigned int* G,
